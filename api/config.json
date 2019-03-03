@@ -1,0 +1,12 @@
+{
+    "development": {
+        "node_port": 8080,
+        "casparcg": {
+            "host": "localhost",
+            "port": 5250
+        }
+    },
+    "testing": {},
+    "staging": {},
+    "production": {}
+}

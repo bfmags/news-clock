@@ -1,0 +1,29 @@
+{
+  "name": "news_clock_api",
+  "version": "0.1.0",
+  "description": "news clock api to casparcg",
+  "author": "bfmags@gmail.com",
+  "main": "api.js",
+  "scripts": {
+    "start": "node api.js",
+    "lint": "eslint test/*.js api.js",
+    "lint:fix": "eslint --fix test/*.js api.js",
+    "pretest": "npm run lint",
+    "test": "nyc --reporter=html --reporter=text mocha --exit --require should --reporter spec --check-leaks",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "dependencies": {
+    "casparcg-connection": "^4.6.1",
+    "date-and-time": "^0.6.3",
+    "express": "^4.16.1",
+    "socket.io": "^2.2.0",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.0",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
+    "should": "^13.2.3",
+    "supertest": "^3.4.2"
+  }
+}

@@ -1,0 +1,68 @@
+body {
+    overflow: hidden;
+    font-family: 'Helvetica Neue';
+    color: white;
+}
+
+.bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 48px;
+}
+
+.left-strap-container {
+    width: 356px;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    position: relative;
+    float: left;
+    white-space: nowrap;
+}
+
+.left-strap-inner {
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    float: left;
+    -webkit-transition: right 2s; /* Safari */
+    transition: right 2s;
+}
+
+.tab {
+    padding-left: 154px;
+    display: inline-block;
+    line-height: 25px;
+    vertical-align: top;
+    position: relative;
+}
+
+.extender {
+    background-color: #8f0000;
+    color: white;
+    right: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 533.33333px;
+}
+
+.text-outer {
+    margin-right: 0;
+    margin-left: auto;
+    display: block;
+    height: 25px;
+    width: 175px;
+}
+
+.text-inner {
+    position: absolute;
+    right: 5px;
+}
+
+.strap-text {
+    float: left;
+    white-space: nowrap;
+    padding-left: 5px;
+    padding-right: 5px;
+}
