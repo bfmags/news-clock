@@ -1,9 +1,9 @@
-## API (task 1)
+## API
 
 - Nodejs app that exposes a simple HTTP API and connects to the CasparCG Server
 - See readme inside the project folder for more info
 
-## Template (task 2)
+## Template
 
 - Template to be used with the CasparCG Server
 - Test it locally by loading it in a browser and calling the leftTab function in the dev tools console.

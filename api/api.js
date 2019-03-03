@@ -1,8 +1,9 @@
 'use strict';
 
 const express = require('express');
-const date = require('date-and-time');
-const {CasparCG} = require("casparcg-connection");
+const {CasparCG} = require('casparcg-connection');
+
+const leftTab = require('./straps/leftTab')
 
 // Load configuration
 const configOBJ = require('./config.json');
@@ -17,58 +18,25 @@ const CASPARCG = config.casparcg;
 
 // Server API
 const api = express();
+const connection = new CasparCG(CASPARCG);
 
-// Connect to CasparCG Server and 
-// load news clock template
-const connection = new CasparCG();
-connection
-    .cgAdd(1,1,1, 'main/MAIN', true)
-    .then(() => {
-        connection.disconnect();
-    })
-    .catch(() => {
-        connection.disconnect();
-        console.log({ message: "Could not load template" });
-    });
+// Load lefTab template
+leftTab.load(connection);
 
 // Set up API 
 api.get("/:action", (req, res) => {
 
-    const action = req.params.action;  
-    const connection = new CasparCG(CASPARCG);
-  
+    const action = req.params.action;    
     switch (action) {
         // start updating clock
-        // TODO: move casparCG related to it's own file
         case "on":
-            this.leftTabIntervalID = setInterval( () => {
-                const now = date.format(new Date(), 'hh:mm');
-                connection
-                    .cgInvoke(1,1,1, `"leftTab('on', 'BBC NEWS ${now}')"`)
-                    .then(() => {
-                        connection.disconnect();
-                        res.json({ message: "News Clock updated." });
-                    })
-                    .catch(() => {
-                        connection.disconnect();
-                        res.json({ message: "Error sending CasparCG command." });
-                    });
-
-            }, 1000);
+            leftTab.on();
+            res.json({ message: "News Clock updated." });
             break;
         
         case "off":
-            clearInterval(this.leftTabIntervalID);
-            connection
-                .cgInvoke(1,1,1, "leftTab('off')")
-                .then(() => {
-                    connection.disconnect();
-                    res.json({ message: "News Clock animated out." });
-                })
-                .catch(() => {
-                    connection.disconnect();
-                    res.json({ message: "Error sending CasparCG command." });
-                });
+            leftTab.off();
+            res.json({ message: "News Clock animated out." });
             break;
   
         default:
